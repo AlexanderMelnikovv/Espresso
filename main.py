@@ -15,13 +15,13 @@ class InfoCoffee(QWidget):
         cur = con.cursor()
         data = cur.execute('''SELECT variety_coffee, degree_of_roasting, ground_or_grains, 
                             taste, price, volume FROM info_coffee''').fetchall()
-        self.tableWidget.setColumnCount(len(data))
-        self.tableWidget.setRowCount(len(data[0]))
-        self.tableWidget.setHorizontalHeaderLabels('Сорт', 'Степень обжарки', 'Молотый/В зёрнах',
-                                                   'Описание вкуса', 'Цена', 'Объём упаковки')
+        self.tableWidget.setColumnCount(len(data[0]))
+        self.tableWidget.setRowCount(len(data))
+        self.tableWidget.setHorizontalHeaderLabels(['Сорт', 'Степень обжарки', 'Молотый/В зёрнах',
+                                                   'Описание вкуса', 'Цена', 'Объём упаковки'])
         for i, elem in enumerate(data):
-            for j, value in elem:
-                self.tableWidget.setItem(i, j, QTableWidgetItem(value))
+            for j, value in enumerate(elem):
+                self.tableWidget.setItem(i, j, QTableWidgetItem(str(value)))
         self.tableWidget.resizeColumnsToContents()
 
 
