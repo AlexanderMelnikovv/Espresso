@@ -7,7 +7,7 @@ from PyQt5 import uic
 class InfoCoffee(QWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi('main.ui')
+        uic.loadUi('main.ui', self)
         self.show_info()
 
     def show_info(self):
